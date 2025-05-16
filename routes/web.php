@@ -7,7 +7,7 @@ use App\Http\Controllers\UserController;
 
 
 
-// Authentication Routes
+// Authentication Routes - Updated
 Route::get('/', [RegisterController::class, 'showRegistrationForm'])->name('register');
 Route::post('/register', [RegisterController::class, 'register']);
 
