@@ -6,7 +6,7 @@
         <div class="card">
             <div class="card-header">
                 <div class="float-start">
-                    Login
+                    Login Account
                 </div>
                 <div class="float-end">
                     <a href="{{ route('register') }}" class="btn btn-primary btn-sm">
