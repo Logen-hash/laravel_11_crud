@@ -35,7 +35,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h3>Users List</h3>
+                <h3>Users Management</h3>
             </div>
             <div class="card-body">
                 <table class="table table-striped">
