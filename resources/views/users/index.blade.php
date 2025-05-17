@@ -15,9 +15,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('users.create') }}">Create User</a>
-                    </li>
+
                     <li class="nav-item">
                         <form action="{{ route('logout') }}" method="POST">
                             @csrf
@@ -74,4 +72,4 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html> 
+</html>

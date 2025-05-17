@@ -11,7 +11,10 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">Register</div>
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>Register</span>
+                        <a href="{{ route('login') }}" class="btn btn-sm btn-outline-primary">Login</a>
+                    </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
@@ -59,6 +62,17 @@
             </div>
         </div>
     </div>
+
+    <div class="container mt-3">
+        <div class="row justify-content-center text-center">
+            <div class="col-md-12">
+                <p>
+                    Return to Website: <a href="https://www.usjr.edu.ph/"><strong>University of San Jose - Recoletos</strong></a>
+                </p>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html> 
+</html>

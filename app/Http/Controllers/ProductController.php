@@ -26,12 +26,21 @@ class ProductController extends Controller
  /**
  * Store a newly created resource in storage.
  */
- public function store(StoreProductRequest $request) : 
+ public function store(StoreProductRequest $request) :
 RedirectResponse
  {
- Product::create($request->validated());
- return redirect()->route('products.index')
- ->withSuccess('New product is added successfully.');
+    $data = $request->validated();
+
+    if ($request->hasFile('image')) {
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('storage/products'), $imageName);
+        $data['image'] = 'products/' . $imageName;
+    }
+
+    Product::create($data);
+    return redirect()->route('products.index')
+        ->withSuccess('New product is added successfully.');
  }
  /**
  * Display the specified resource.
@@ -53,17 +62,36 @@ RedirectResponse
  public function update(UpdateProductRequest $request, Product
 $product) : RedirectResponse
  {
- $product->update($request->validated());
- return redirect()->back()
- ->withSuccess('Product is updated successfully.');
+    $data = $request->validated();
+
+    if ($request->hasFile('image')) {
+        // Delete old image if exists
+        if ($product->image && file_exists(public_path('storage/' . $product->image))) {
+            unlink(public_path('storage/' . $product->image));
+        }
+
+        $image = $request->file('image');
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
+        $image->move(public_path('storage/products'), $imageName);
+        $data['image'] = 'products/' . $imageName;
+    }
+
+    $product->update($data);
+    return redirect()->back()
+        ->withSuccess('Product is updated successfully.');
  }
  /**
  * Remove the specified resource from storage.
  */
  public function destroy(Product $product) : RedirectResponse
  {
- $product->delete();
- return redirect()->route('products.index')
- ->withSuccess('Product is deleted successfully.');
+    // Delete image if exists
+    if ($product->image && file_exists(public_path('storage/' . $product->image))) {
+        unlink(public_path('storage/' . $product->image));
+    }
+
+    $product->delete();
+    return redirect()->route('products.index')
+        ->withSuccess('Product is deleted successfully.');
  }
 }

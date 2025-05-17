@@ -11,7 +11,10 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <div class="card-header">Login</div>
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span>Login</span>
+                        <a href="{{ route('register') }}" class="btn btn-sm btn-outline-primary">Register</a>
+                    </div>
                     <div class="card-body">
                         @if(session('success'))
                             <div class="alert alert-success">
@@ -55,6 +58,17 @@
             </div>
         </div>
     </div>
+
+    <div class="container mt-3">
+        <div class="row justify-content-center text-center">
+            <div class="col-md-12">
+                <p>
+                    Return to Website: <a href="https://www.usjr.edu.ph/"><strong>University of San Jose - Recoletos</strong></a>
+                </p>
+            </div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html> 
+</html>
